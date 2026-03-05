@@ -1,7 +1,7 @@
 # モデル
 model = "gpt-5.3-codex"
 # 推論
-model_reasoning_effort = "medium"
+model_reasoning_effort = "high"
 hide_agent_reasoning = true
 
 # Notify（Claude Hooks相当）で音を鳴らす
@@ -9,3 +9,6 @@ notify = ["bash", "-lc", "afplay /System/Library/Sounds/Ping.aiff"]
 
 web_search = 'live'
 personality = "pragmatic"
+
+[tui]
+status_line = ["model-with-reasoning", "project-root", "git-branch", "context-used"]
