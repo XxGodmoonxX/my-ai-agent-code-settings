@@ -24,5 +24,5 @@ disable-model-invocation: false
 
 - コミットしてください。
   - まだトラックされていないファイルや設定ファイルなど、すべてのファイルがコミット対象です。
-- コミットメッセージは Conventional Commits https://www.conventionalcommits.org/ja/v1.0.0 の仕様を参考にしたメッセージにしてください。
+- コミットメッセージは Conventional Commits https://www.conventionalcommits.org/ja/v1.0.0 の仕様を参考にし、`type(scope): 説明` の「説明」は日本語で書いてください。
 - 分割してコミットすべきと判断した場合は分割してコミットしてください。
