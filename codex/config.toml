@@ -12,3 +12,10 @@ personality = "pragmatic"
 
 [tui]
 status_line = ["model-with-reasoning", "project-root", "git-branch", "context-used"]
+
+[mcp_servers.chrome-devtools]
+command = "/Users/m-watanabe/.asdf/shims/npx"
+args = ["-y", "chrome-devtools-mcp@latest"]
+
+[mcp_servers.chrome-devtools.env]
+ASDF_NODEJS_VERSION = "22.16.0"
