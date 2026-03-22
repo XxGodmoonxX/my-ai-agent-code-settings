@@ -36,7 +36,7 @@ RESET="\033[0m"
 row1=""
 
 # Model segment (purple bg, white text)
-row1+="${PURPLE_BG}${WHITE_FG} Model: ${model} ${RESET}"
+row1+="${PURPLE_BG}${BLACK_FG} Model: ${model} ${RESET}"
 row1+="${PURPLE_FG}${YELLOW_BG}${SEP_RIGHT}${RESET}"
 
 # Context segment (yellow bg, dark text)
@@ -93,7 +93,7 @@ if [ ${#short_cwd} -gt 40 ]; then
     fi
 fi
 
-row2+="${PURPLE_BG}${WHITE_FG} cwd: ${short_cwd} ${RESET}"
+row2+="${PURPLE_BG}${BLACK_FG} cwd: ${short_cwd} ${RESET}"
 
 # Output both rows
 printf "%b\n%b\n" "$row1" "$row2"
