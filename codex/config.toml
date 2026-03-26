@@ -1,14 +1,17 @@
 # モデル
 model = "gpt-5.4"
-# 推論
+# デフォルト
 model_reasoning_effort = "high"
-# hide_agent_reasoning = true
+# planモード
+plan_mode_reasoning_effort = "high"
 
 # Notify（Claude Hooks相当）で音を鳴らす
 notify = ["bash", "-lc", "afplay /System/Library/Sounds/Ping.aiff"]
 
 web_search = 'live'
 personality = "pragmatic"
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
 
 [tui]
 status_line = ["model-with-reasoning", "project-root", "git-branch", "context-used"]
@@ -22,4 +25,7 @@ args = ["-y", "chrome-devtools-mcp@latest"]
 ASDF_NODEJS_VERSION = "22.16.0"
 
 [features]
+# stable
 multi_agent = true
+# under development
+voice_transcription = true
