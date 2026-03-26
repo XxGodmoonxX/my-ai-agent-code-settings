@@ -9,6 +9,8 @@ notify = ["bash", "-lc", "afplay /System/Library/Sounds/Ping.aiff"]
 
 web_search = 'live'
 personality = "pragmatic"
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
 
 [tui]
 status_line = ["model-with-reasoning", "project-root", "git-branch", "context-used"]
