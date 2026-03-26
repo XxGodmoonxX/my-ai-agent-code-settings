@@ -24,4 +24,7 @@ args = ["-y", "chrome-devtools-mcp@latest"]
 ASDF_NODEJS_VERSION = "22.16.0"
 
 [features]
+# stable
 multi_agent = true
+# under development
+voice_transcription = true
