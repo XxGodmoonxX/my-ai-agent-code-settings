@@ -27,3 +27,12 @@ ASDF_NODEJS_VERSION = "22.16.0"
 [features]
 # stable
 multi_agent = true
+
+[plugins."google-calendar@openai-curated"]
+enabled = true
+
+[plugins."github@openai-curated"]
+enabled = true
+
+[plugins."notion@openai-curated"]
+enabled = true
