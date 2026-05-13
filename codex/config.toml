@@ -1,7 +1,7 @@
 # モデル
-model = "gpt-5.4"
+model = "gpt-5.5"
 # デフォルト
-model_reasoning_effort = "high"
+model_reasoning_effort = "medium"
 # planモード
 plan_mode_reasoning_effort = "high"
 
