@@ -27,5 +27,21 @@
     "sentry@claude-plugins-official": true
   },
   "language": "Japanese",
-  "voiceEnabled": true
+  "effortLevel": "high",
+  "theme": "auto",
+  "voiceEnabled": true,
+  "permissions": {
+    "deny": [
+      "Bash(rm*)"
+    ],
+    "allow": [
+      "Bash(git add*)",
+      "Bash(git pull*)",
+      "Bash(git commit*)",
+      "Bash(gh pr view*)",
+      "Bash(cmux read-screen *)",
+      "Bash(cmux capture-pane *)",
+      "Bash(asdf list *)"
+    ]
+  }
 }
