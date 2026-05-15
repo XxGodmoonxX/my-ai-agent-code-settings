@@ -10,11 +10,15 @@
       "Bash(gh pr view*)",
       "Bash(cmux read-screen *)",
       "Bash(cmux capture-pane *)",
-      "Bash(asdf list *)"
+      "Bash(asdf list *)",
+      "WebSearch",
+      "Bash(cursor --version)",
+      "Bash(agent --help)"
     ],
     "deny": [
       "Bash(rm*)"
-    ]
+    ],
+    "defaultMode": "default"
   },
   "model": "sonnet",
   "hooks": {
@@ -38,7 +42,8 @@
     "notion@claude-plugins-official": true,
     "context7@claude-plugins-official": true,
     "chrome-devtools-mcp@claude-plugins-official": false,
-    "sentry@claude-plugins-official": true
+    "sentry@claude-plugins-official": true,
+    "github@claude-plugins-official": true
   },
   "language": "Japanese",
   "effortLevel": "medium",
