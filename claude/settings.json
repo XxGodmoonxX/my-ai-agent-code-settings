@@ -8,12 +8,15 @@
       "Bash(git pull*)",
       "Bash(git commit*)",
       "Bash(gh pr view*)",
+      "Bash(gh pr diff*)",
       "Bash(cmux read-screen *)",
       "Bash(cmux capture-pane *)",
       "Bash(asdf list *)",
       "WebSearch",
       "Bash(cursor --version)",
-      "Bash(agent --help)"
+      "Bash(agent --help)",
+      "mcp__plugin_Notion_notion__notion-fetch",
+      "mcp__plugin_Notion_notion__notion-query-data-sources"
     ],
     "deny": [
       "Bash(rm*)"
@@ -49,5 +52,6 @@
   "effortLevel": "medium",
   "advisorModel": "opus",
   "theme": "auto",
-  "voiceEnabled": true
+  "voiceEnabled": true,
+  "skipAutoPermissionPrompt": true
 }
