@@ -1,6 +1,7 @@
 ---
 name: external-agent-review
 description: "外部エージェントにブランチ差分のコードレビューを依頼し、High/Medium/Low 形式で指摘を取得します"
+context: fork
 ---
 
 # 外部エージェントによるコードレビュー
