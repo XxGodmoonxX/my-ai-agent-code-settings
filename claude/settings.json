@@ -16,7 +16,8 @@
       "Bash(cursor --version)",
       "Bash(agent --help)",
       "mcp__plugin_Notion_notion__notion-fetch",
-      "mcp__plugin_Notion_notion__notion-query-data-sources"
+      "mcp__plugin_Notion_notion__notion-query-data-sources",
+      "Skill(git-commit)"
     ],
     "deny": [
       "Bash(rm*)"
