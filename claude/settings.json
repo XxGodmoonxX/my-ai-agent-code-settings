@@ -17,7 +17,8 @@
       "Bash(agent --help)",
       "mcp__plugin_Notion_notion__notion-fetch",
       "mcp__plugin_Notion_notion__notion-query-data-sources",
-      "Skill(git-commit)"
+      "Skill(git-commit)",
+      "Bash(glab mr view*)"
     ],
     "deny": [
       "Bash(rm*)"
@@ -45,14 +46,14 @@
   "enabledPlugins": {
     "notion@claude-plugins-official": true,
     "context7@claude-plugins-official": true,
-    "chrome-devtools-mcp@claude-plugins-official": false,
     "sentry@claude-plugins-official": true,
-    "github@claude-plugins-official": true
+    "github@claude-plugins-official": true,
+    "playwright@claude-plugins-official": true
   },
   "language": "Japanese",
   "effortLevel": "medium",
   "advisorModel": "opus",
   "theme": "auto",
-  "voiceEnabled": true,
-  "skipAutoPermissionPrompt": true
+  "skipAutoPermissionPrompt": true,
+  "voiceEnabled": true
 }
