@@ -21,22 +21,35 @@ description: フロントエンド変更後にブラウザで動作確認し、U
 
 ## ブラウザの選び方
 
-Cursor で実行している場合は、Cursor 内蔵ブラウザ（`cursor-ide-browser`）を優先して使う。外部ブラウザや別の自動化手段に切り替えるのは、Cursor 内蔵ブラウザで確認できない理由がある場合だけにする。
+実行環境に応じて、次の優先順位でブラウザを選ぶ。
 
-ブラウザ MCP ツールを呼ぶ前に、必ず対象サーバーの tool descriptor / schema を確認する。既存タブがある場合はタブ一覧を確認し、必要に応じてブラウザを lock してから操作する。
+| 実行環境 | 第1選択 | フォールバック |
+| --- | --- | --- |
+| Cursor | Cursor 内蔵ブラウザ（`cursor-ide-browser`） | Playwright MCP（`plugin-playwright-playwright`） |
+| Cursor 以外の AI エージェント | Playwright MCP（`plugin-playwright-playwright`） | 利用できない場合は停止して報告する |
+
+Cursor で実行している場合は、まず `cursor-ide-browser` を使う。`cursor-ide-browser` が無効、未接続、ツール呼び出し失敗、または内蔵ブラウザでは再現できない理由がある場合だけ Playwright MCP に切り替える。切り替える場合は、その理由を短くユーザーに報告する。
+
+Cursor 以外の AI エージェントで実行している場合は、`cursor-ide-browser` を前提にせず Playwright MCP を使う。
+
+ブラウザ MCP ツールを呼ぶ前に、必ず対象サーバーの tool descriptor / schema を確認する。`cursor-ide-browser` と Playwright MCP は `browser_snapshot` / `browser_navigate` / `browser_click` などのツール名が共通で、サーバー名だけが異なる。
+
+既存タブがある場合はタブ一覧を確認し、必要に応じてブラウザを lock してから操作する。`cursor-ide-browser` で lock する場合は、先に `browser_navigate` でタブを用意してから `browser_lock` を実行する。
 
 ## ワークフロー
 
 1. 目的画面、確認したい挙動、成功条件、対象 URL を整理する。
 2. 既存の dev server や Storybook が動いているか確認し、無ければプロジェクトの標準コマンドで起動する。
-3. Cursor 内蔵ブラウザで対象画面を開く。
+3. 「ブラウザの選び方」の優先順位に従い、対象画面をブラウザで開く。
 4. `snapshot` を使ってページ構造を確認し、必要に応じて `screenshot`、console、network の情報も見る。
 5. 期待と違う挙動、表示崩れ、console error、network error、操作不能な UI を問題として記録する。
 6. 問題があれば、関連するコードを最小範囲で調査して原因を特定する。
 7. コードを修正する。既存の設計、コンポーネント、テスト、Storybook の書き方に合わせる。
 8. リポジトリに合う軽量な検証を実行する。例: lint、typecheck、unit test、Storybook の関連確認。
-9. 同じ対象 URL と同じ確認手順でブラウザ再確認を行う。
-10. 修正前の問題、修正内容、再確認結果、実行した検証を簡潔に報告する。
+9. 同じ対象 URL と同じ確認手順で、選択したブラウザを使って再確認を行う。
+10. 修正前の問題、修正内容、再確認結果、実行した検証を整理する。
+11. 作業後のクリーンアップを行い、ブラウザ確認で自動保存された一時ファイルを削除する。
+12. 修正前の問題、修正内容、再確認結果、実行した検証、削除した一時ファイルを簡潔に報告する。
 
 ## 操作ルール
 
@@ -54,6 +67,29 @@ Cursor で実行している場合は、Cursor 内蔵ブラウザ（`cursor-ide-
 - フォーマット、命名、状態管理、API 呼び出し、テストの置き方は周辺コードに合わせる。
 - 修正後は、最初に問題を見つけた操作をもう一度実行して確認する。
 
+## 作業後のクリーンアップ
+
+ブラウザ QA が完了したら、成功・中断に関わらず、コード修正のコミット前にブラウザ確認で自動保存された一時ファイルを削除する。
+
+特に Playwright MCP を使った場合は、次のようなファイルがワークスペースに残りやすい。
+
+| 種類 | 典型パス | 発生元 |
+| --- | --- | --- |
+| スナップショット | `.playwright-mcp/page-*.yml` | `browser_snapshot` |
+| コンソールログ | `.playwright-mcp/console-*.log` | `browser_console_messages` |
+| スクリーンショット | `*.png` など、`browser_take_screenshot` の `filename` に指定したファイル | `browser_take_screenshot` |
+
+削除対象は、少なくとも次を含める。
+
+- `.playwright-mcp/` ディレクトリ一式
+- そのセッションで `browser_take_screenshot` の `filename` に指定した画像ファイル
+
+削除後は `git status` で、意図しない untracked file や generated file が残っていないか確認する。`.gitignore` への追加は、ユーザーが明示的に依頼した場合だけ行う。
+
+Cursor 内蔵ブラウザのみで完結した場合も、ルート直下などにスクリーンショットやスナップショットが増えていないか確認し、今回の確認で作られた一時ファイルは削除する。
+
+スクリーンショットを保存する必要がある場合は、可能ならルート直下ではなく `/tmp` や明示的な一時ディレクトリを使う。検証のために保存した場合も、最終的に不要なら削除する。
+
 ## 最終報告
 
 完了時は次を短くまとめる。
@@ -63,4 +99,5 @@ Cursor で実行している場合は、Cursor 内蔵ブラウザ（`cursor-ide-
 - 修正内容
 - 再確認結果
 - 実行した検証コマンド
+- 削除した一時ファイル（あれば）
 - 未確認事項や手動対応が必要な点
