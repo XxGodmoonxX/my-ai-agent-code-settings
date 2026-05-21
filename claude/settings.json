@@ -4,24 +4,29 @@
   },
   "permissions": {
     "allow": [
+      "WebSearch",
       "Bash(git add*)",
       "Bash(git pull*)",
       "Bash(git commit*)",
+      "Bash(git fetch *)",
       "Bash(gh pr view*)",
       "Bash(gh pr diff*)",
-      "Bash(cmux read-screen *)",
-      "Bash(cmux capture-pane *)",
+      "Bash(glab mr view*)",
       "Bash(asdf list *)",
-      "WebSearch",
       "Bash(cursor --version)",
       "Bash(agent --help)",
+      "Bash(cmux read-screen *)",
+      "Bash(cmux capture-pane *)",
+      "Skill(git-commit)",
       "mcp__plugin_Notion_notion__notion-fetch",
       "mcp__plugin_Notion_notion__notion-query-data-sources",
-      "Skill(git-commit)",
-      "Bash(glab mr view*)"
+      "mcp__plugin_playwright_playwright__browser_navigate",
+      "mcp__plugin_playwright_playwright__browser_tabs",
+      "mcp__plugin_playwright_playwright__browser_take_screenshot",
+      "mcp__plugin_playwright_playwright__browser_snapshot",
+      "mcp__plugin_playwright_playwright__browser_click"
     ],
     "deny": [
-      "Bash(rm*)"
     ],
     "defaultMode": "default"
   },
