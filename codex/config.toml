@@ -5,8 +5,6 @@ model_reasoning_effort = "medium"
 # planモード
 plan_mode_reasoning_effort = "high"
 
-# Notify（Claude Hooks相当）で音を鳴らす
-
 web_search = 'live'
 personality = "pragmatic"
 approval_policy = "on-request"
