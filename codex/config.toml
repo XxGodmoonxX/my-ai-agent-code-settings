@@ -6,15 +6,19 @@ model_reasoning_effort = "medium"
 plan_mode_reasoning_effort = "high"
 
 # Notify（Claude Hooks相当）で音を鳴らす
-notify = ["bash", "-lc", "afplay /System/Library/Sounds/Ping.aiff"]
 
 web_search = 'live'
 personality = "pragmatic"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
 
+notify = ["/Users/m-watanabe/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient", "turn-ended", "--previous-notify", "[\"bash\",\"-lc\",\"afplay \\/System\\/Library\\/Sounds\\/Ping.aiff\"]"]
+
 [tui]
 status_line = ["model-with-reasoning", "project-root", "git-branch", "context-used"]
+
+[tui.model_availability_nux]
+"gpt-5.5" = 4
 
 [mcp_servers.chrome-devtools]
 # TODO: これ、なんか良い感じにしたいな…… PCごとにユーザー名違うよね
@@ -27,6 +31,7 @@ ASDF_NODEJS_VERSION = "22.16.0"
 [features]
 # stable
 multi_agent = true
+goals = true
 
 [plugins."google-calendar@openai-curated"]
 enabled = true
@@ -35,4 +40,22 @@ enabled = true
 enabled = true
 
 [plugins."notion@openai-curated"]
+enabled = true
+
+[plugins."documents@openai-primary-runtime"]
+enabled = true
+
+[plugins."spreadsheets@openai-primary-runtime"]
+enabled = true
+
+[plugins."presentations@openai-primary-runtime"]
+enabled = true
+
+[plugins."browser@openai-bundled"]
+enabled = true
+
+[plugins."computer-use@openai-bundled"]
+enabled = true
+
+[plugins."chrome@openai-bundled"]
 enabled = true
