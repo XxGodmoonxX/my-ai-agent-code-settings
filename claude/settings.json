@@ -81,6 +81,7 @@
     "deny": [],
     "defaultMode": "default"
   },
+  "model": "sonnet",
   "hooks": {
     "Notification": [
       {
@@ -99,12 +100,21 @@
     "command": "$HOME/.claude/statusline-powerline.sh"
   },
   "enabledPlugins": {
-    "notion@claude-plugins-official": true,
     "context7@claude-plugins-official": true,
     "sentry@claude-plugins-official": true,
     "playwright@claude-plugins-official": true,
     "ruby-lsp@claude-plugins-official": true,
-    "figma@claude-plugins-official": true
+    "gopls-lsp@claude-plugins-official": true,
+    "codex@openai-codex": true,
+    "coderabbit@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "openai-codex": {
+      "source": {
+        "source": "github",
+        "repo": "openai/codex-plugin-cc"
+      }
+    }
   },
   "language": "Japanese",
   "effortLevel": "medium",
