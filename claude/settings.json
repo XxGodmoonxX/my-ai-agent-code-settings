@@ -1,6 +1,7 @@
 {
   "env": {
-    "CLAUDE_CODE_NO_FLICKER": "1"
+    "CLAUDE_CODE_NO_FLICKER": "1",
+    "CLAUDE_AFK_TIMEOUT_MS": "3600000"
   },
   "permissions": {
     "allow": [
@@ -15,6 +16,7 @@
       "WebFetch(domain:raw.githubusercontent.com)",
       "WebFetch(domain:azure.status.microsoft)",
       "WebFetch(domain:status.ai.azure.com)",
+      "Read(//Users/m-watanabe/Downloads/**)",
       "Bash(git add*)",
       "Bash(git pull*)",
       "Bash(git commit*)",
@@ -82,6 +84,9 @@
     "defaultMode": "default"
   },
   "model": "sonnet",
+  "fallbackModel": [
+    "claude-opus-4-7"
+  ],
   "hooks": {
     "Notification": [
       {
@@ -117,8 +122,9 @@
     }
   },
   "language": "Japanese",
-  "effortLevel": "medium",
+  "effortLevel": "high",
   "advisorModel": "opus",
+  "askUserQuestionTimeout": "never",
   "skipWorkflowUsageWarning": true,
   "theme": "auto",
   "autoCompactEnabled": true,
