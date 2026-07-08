@@ -16,7 +16,6 @@
       "WebFetch(domain:raw.githubusercontent.com)",
       "WebFetch(domain:azure.status.microsoft)",
       "WebFetch(domain:status.ai.azure.com)",
-      "Read(//Users/m-watanabe/Downloads/**)",
       "Bash(git add*)",
       "Bash(git pull*)",
       "Bash(git commit*)",
