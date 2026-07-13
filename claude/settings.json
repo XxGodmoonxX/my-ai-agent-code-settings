@@ -77,15 +77,15 @@
       "mcp__plugin_playwright_playwright__browser_console_messages",
       "mcp__plugin_playwright_playwright__browser_network_requests",
       "mcp__plugin_playwright_playwright__browser_press_key",
-      "Skill(git-commit)"
+      "Skill(git-commit)",
+      "Bash(node ~/.claude/plugins/cache/openai-codex/codex/*)"
     ],
-    "deny": [],
-    "defaultMode": "default"
+    "deny": ["Edit(~/.claude/plugins/cache/openai-codex/**)"],
+    "defaultMode": "default",
+    "additionalDirectories": ["~/.claude/plugins/cache/openai-codex"]
   },
-  "model": "sonnet",
-  "fallbackModel": [
-    "claude-opus-4-7"
-  ],
+  "model": "claude-fable-5[1m]",
+  "fallbackModel": ["claude-opus-4-7"],
   "hooks": {
     "Notification": [
       {

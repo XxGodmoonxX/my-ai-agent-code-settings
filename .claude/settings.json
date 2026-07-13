@@ -15,7 +15,12 @@
       "Bash(gh pr edit*)",
       "Bash(gh pr merge*)",
       "Bash(gh pr view*)",
-      "Skill(git-commit)"
+      "Skill(git-commit)",
+      "Bash(diff*)",
+      "Bash(cp ~/.claude/CLAUDE.md claude/CLAUDE.md)",
+      "Bash(cp ~/.claude/settings.json claude/settings.json)",
+      "Bash(cp ~/.claude/statusline-powerline.sh claude/statusline-powerline.sh)",
+      "Bash(cp ~/.agents/skills/external-agent-review/SKILL.md agents/skills/external-agent-review/SKILL.md)"
     ]
   }
 }
