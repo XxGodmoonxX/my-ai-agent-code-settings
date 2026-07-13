@@ -18,9 +18,25 @@ total_input=$(echo "$input" | jq -r '.context_window.total_input_tokens // 0')
 total_output=$(echo "$input" | jq -r '.context_window.total_output_tokens // 0')
 ctx_max=$(echo "$input" | jq -r '.context_window.context_window_size // 200000')
 effort=$(echo "$input" | jq -r '.effort.level // empty')
+# Dirs from user settings additionalDirectories are always present, so showing
+# them is just noise — display only dirs added ad hoc via --add-dir / /add-dir
+settings_dirs=()
+if [ -f "$HOME/.claude/settings.json" ]; then
+    while IFS= read -r line; do
+        [ -n "$line" ] && settings_dirs+=("${line/#\~/$HOME}")
+    done < <(jq -r '.permissions.additionalDirectories // [] | .[]' "$HOME/.claude/settings.json" 2>/dev/null)
+fi
 added_dirs=()
 while IFS= read -r line; do
-    [ -n "$line" ] && added_dirs+=("$line")
+    [ -n "$line" ] || continue
+    skip=false
+    for sd in "${settings_dirs[@]}"; do
+        if [ "${line%/}" = "${sd%/}" ]; then
+            skip=true
+            break
+        fi
+    done
+    [ "$skip" = true ] || added_dirs+=("$line")
 done < <(echo "$input" | jq -r '.workspace.added_dirs // [] | .[]')
 
 # Powerline separators (UTF-8 bytes for U+E0B0 and U+E0B2)
