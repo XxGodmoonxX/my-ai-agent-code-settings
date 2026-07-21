@@ -1,1 +1,1 @@
-Please answer in Japanese.
+../agents/AGENTS.md
