@@ -84,8 +84,8 @@
     "defaultMode": "default",
     "additionalDirectories": ["~/.claude/plugins/cache/openai-codex"]
   },
-  "model": "claude-fable-5[1m]",
-  "fallbackModel": ["claude-opus-5"],
+  "model": "opus",
+  "fallbackModel": ["sonnet"],
   "hooks": {
     "Notification": [
       {
@@ -120,13 +120,27 @@
     "ruby-lsp@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true,
     "codex@openai-codex": true,
-    "coderabbit@claude-plugins-official": true
+    "coderabbit@claude-plugins-official": true,
+    "figma@claude-plugins-official": true,
+    "eli5@claude-community": true
   },
   "extraKnownMarketplaces": {
     "openai-codex": {
       "source": {
         "source": "github",
         "repo": "openai/codex-plugin-cc"
+      }
+    },
+    "claude-plugins-official": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/claude-plugins-official"
+      }
+    },
+    "claude-community": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/claude-plugins-community"
       }
     }
   },
@@ -138,5 +152,10 @@
   "theme": "auto",
   "autoCompactEnabled": true,
   "skipAutoPermissionPrompt": true,
-  "voiceEnabled": true
+  "voiceEnabled": true,
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "high"
+    }
+  }
 }

@@ -1,9 +1,9 @@
 # モデル
-model = "gpt-5.6-sol"
+model = "gpt-6-sol"
 # デフォルト
 model_reasoning_effort = "medium"
 # planモード
-plan_mode_reasoning_effort = "high"
+plan_mode_reasoning_effort = "xhigh"
 
 web_search = 'live'
 personality = "pragmatic"
@@ -29,10 +29,15 @@ args = ["-y", "chrome-devtools-mcp@latest"]
 [mcp_servers.chrome-devtools.env]
 ASDF_NODEJS_VERSION = "22.16.0"
 
+[mcp_servers.openaiDeveloperDocs]
+url = "https://developers.openai.com/mcp"
+
 [features]
 # stable
 multi_agent = true
 goals = true
+terminal_resize_reflow = true
+js_repl = false
 
 [plugins."google-calendar@openai-curated"]
 enabled = true
@@ -60,3 +65,21 @@ enabled = true
 
 [plugins."chrome@openai-bundled"]
 enabled = true
+
+[plugins."pdf@openai-primary-runtime"]
+enabled = true
+
+[plugins."template-creator@openai-primary-runtime"]
+enabled = true
+
+[plugins."visualize@openai-bundled"]
+enabled = true
+
+[plugins."codex-app-tools@openai-bundled"]
+enabled = true
+
+[plugins."unified-computer-use@openai-bundled"]
+enabled = true
+
+[apps.asdk_app_69c18c28f1188191bf5b8445c4ab0a2e.tools."notion.notion-update-page"]
+approval_mode = "approve"
