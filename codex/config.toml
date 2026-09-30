@@ -1,7 +1,7 @@
 # モデル
-model = "gpt-6-sol"
+model = "gpt-6.1-sol"
 # デフォルト
-model_reasoning_effort = "medium"
+model_reasoning_effort = "high"
 # planモード
 plan_mode_reasoning_effort = "xhigh"
 
@@ -9,9 +9,9 @@ web_search = 'live'
 personality = "pragmatic"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
-service_tier = "default"
 
 notify = ["/Users/m-watanabe/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient", "turn-ended", "--previous-notify", "[\"bash\",\"-lc\",\"afplay \\/System\\/Library\\/Sounds\\/Ping.aiff\"]"]
+service_tier = "default"
 
 [tui]
 status_line = ["model-with-reasoning", "git-branch", "context-used", "current-dir", "approval-mode", "codex-version"]
@@ -20,9 +20,9 @@ status_line_use_colors = true
 [tui.model_availability_nux]
 "gpt-5.5" = 4
 "gpt-5.6-sol" = 4
+"gpt-6.1-sol" = 1
 
 [mcp_servers.chrome-devtools]
-# TODO: これ、なんか良い感じにしたいな…… PCごとにユーザー名違うよね
 command = "/Users/m-watanabe/.asdf/shims/npx"
 args = ["-y", "chrome-devtools-mcp@latest"]
 
@@ -60,9 +60,6 @@ enabled = true
 [plugins."browser@openai-bundled"]
 enabled = true
 
-[plugins."computer-use@openai-bundled"]
-enabled = true
-
 [plugins."chrome@openai-bundled"]
 enabled = true
 
@@ -70,6 +67,9 @@ enabled = true
 enabled = true
 
 [plugins."template-creator@openai-primary-runtime"]
+enabled = true
+
+[plugins."computer-use@openai-bundled"]
 enabled = true
 
 [plugins."visualize@openai-bundled"]
